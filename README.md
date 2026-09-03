@@ -1,51 +1,78 @@
-# 🎁 GiftBro AI
+# GiftBro AI 🎁
 
-GiftBro AI is a personalized gift recommendation system that combines machine learning, contextual matching, persistent storage, and a conversational recommendation layer.
+GiftBro AI is a personalized gift recommendation system that combines
+machine learning, contextual ranking, and generative AI to help users
+find better gifts for specific people and occasions.
 
-## Features
+Instead of simply generating gift ideas, GiftBro first ranks real catalogue
+items using a hybrid recommendation system and then optionally uses Gemini
+to add a personalized explanation.
 
-- Personalized gift recommendations
-- TF-IDF based text representation
-- Cosine similarity
-- Occasion matching
-- Relationship matching
-- Interest matching
-- Personality matching
-- Budget-aware ranking
-- GiftBro conversational personality
-- Save favorite gifts
-- Recommendation history
-- Shopping search links
-- FastAPI backend
-- Streamlit frontend
-- SQLite persistence
+---
 
-## Architecture
+## ✨ What GiftBro Does
 
-User Profile
-→ Feature Construction
-→ TF-IDF
-→ Cosine Similarity
-→ Context Matching
-→ Budget Filtering
-→ Hybrid Ranking
-→ GiftBro Coach
-→ Recommendation UI
+A user provides information about the recipient:
 
-## Tech Stack
+- Name / role
+- Age
+- Relationship
+- Occasion
+- Interests
+- Personality
+- Gift style
+- Personalization level
+- Budget
+- Things to avoid
+- Recommendation preference
 
-- Python
-- Pandas
-- Scikit-learn
-- TF-IDF
-- Cosine Similarity
-- Streamlit
-- FastAPI
-- SQLite
-- Pydantic
+GiftBro then:
 
-## Run locally
+1. Filters suitable gift candidates.
+2. Calculates semantic similarity using TF-IDF.
+3. Uses cosine similarity to compare the recipient profile with gift data.
+4. Combines contextual signals such as relationship, occasion, personality,
+   interests, and budget.
+5. Produces a ranked shortlist.
+6. Optionally sends the ranked candidates to Gemini for deeper personalization.
+7. Allows users to save gifts and view recommendation history.
 
-```bash
-pip install -r requirements.txt
-streamlit run app.py
+---
+
+## 🧠 Recommendation Architecture
+
+```text
+                    User Profile
+                         │
+                         ▼
+                 Candidate Filtering
+                         │
+                         ▼
+              ┌──────────────────────┐
+              │   Recommendation     │
+              │       Engine         │
+              └──────────────────────┘
+                         │
+             ┌───────────┴───────────┐
+             ▼                       ▼
+        TF-IDF Vectorization    Context Signals
+             │                       │
+             └───────────┬───────────┘
+                         ▼
+                  Cosine Similarity
+                         │
+                         ▼
+                  Hybrid Ranking
+                         │
+                         ▼
+                Top Gift Candidates
+                         │
+                         ▼
+               Fast Results Display
+                         │
+              ┌──────────┴──────────┐
+              ▼                     ▼
+        Save / Details       Optional Gemini
+                                    │
+                                    ▼
+                           Personalized Advice
