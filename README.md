@@ -1,18 +1,18 @@
-# GiftBro AI 🎁
+# 🎁 GiftBro AI
 
-GiftBro AI is a personalized gift recommendation system that combines
-machine learning, contextual ranking, and generative AI to help users
-find better gifts for specific people and occasions.
+**GiftBro AI is a hybrid gift recommendation system that combines machine learning with generative AI to help users find more relevant, personalized gifts.**
 
-Instead of simply generating gift ideas, GiftBro first ranks real catalogue
-items using a hybrid recommendation system and then optionally uses Gemini
-to add a personalized explanation.
+Instead of simply asking an AI to invent gift ideas, GiftBro first ranks real catalogue items using a recommendation engine and then optionally uses Gemini to add the human touch.
 
 ---
 
-## ✨ What GiftBro Does
+## ✨ What is GiftBro?
 
-A user provides information about the recipient:
+Choosing a gift sounds simple until you actually have to choose one.
+
+GiftBro turns that process into a structured recommendation workflow.
+
+The user provides information about the recipient, including:
 
 - Name / role
 - Age
@@ -24,42 +24,96 @@ A user provides information about the recipient:
 - Personalization level
 - Budget
 - Things to avoid
-- Recommendation preference
+- Recommendation strategy
 
-GiftBro then:
+GiftBro then analyzes that profile against its gift catalogue and produces a ranked shortlist.
 
-1. Filters suitable gift candidates.
-2. Calculates semantic similarity using TF-IDF.
-3. Uses cosine similarity to compare the recipient profile with gift data.
-4. Combines contextual signals such as relationship, occasion, personality,
-   interests, and budget.
-5. Produces a ranked shortlist.
-6. Optionally sends the ranked candidates to Gemini for deeper personalization.
-7. Allows users to save gifts and view recommendation history.
+Gemini can then take that shortlist and generate personalized advice such as:
+
+- Why the gift fits
+- How to personalize it
+- How to present it
+- A message to include
+- A final recommendation note
 
 ---
 
-## 🧠 Recommendation Architecture
+# 📸 Product Demo
+
+## 🏠 Home
+
+![GiftBro Home](assets/home.png)
+
+---
+
+## 🎯 Build a Gift Profile
+
+![GiftBro Discover](assets/discover.png)
+
+---
+
+## 🎨 Fine-Tune Preferences
+
+![Gift Preferences](assets/discover-details.png)
+
+---
+
+## 🧠 Recommendation Results
+
+![GiftBro Results](assets/results-top.png)
+
+---
+
+## 🏆 Gift Picks
+
+![GiftBro Picks](assets/results-picks.png)
+
+---
+
+## 🔍 Gift Details
+
+![Gift Details](assets/results-details.png)
+
+---
+
+## ✨ Gemini Personalization
+
+![Gemini Personalization](assets/gemini.png)
+
+---
+
+# 🧠 Recommendation Architecture
+
+GiftBro uses a hybrid recommendation pipeline instead of relying on a single score.
 
 ```text
-                    User Profile
+                    USER PROFILE
                          │
                          ▼
-                 Candidate Filtering
+                Candidate Filtering
                          │
                          ▼
-              ┌──────────────────────┐
-              │   Recommendation     │
-              │       Engine         │
-              └──────────────────────┘
+              ┌─────────────────────┐
+              │ Recommendation      │
+              │      Engine         │
+              └─────────────────────┘
                          │
-             ┌───────────┴───────────┐
-             ▼                       ▼
-        TF-IDF Vectorization    Context Signals
-             │                       │
-             └───────────┬───────────┘
+              ┌──────────┴──────────┐
+              ▼                     ▼
+        TF-IDF Features       Context Signals
+              │                     │
+              ▼                     ▼
+       Cosine Similarity      Occasion Match
+                              Relationship Match
+                              Interest Match
+                              Personality Match
+              │                     │
+              └──────────┬──────────┘
                          ▼
-                  Cosine Similarity
+                   Preference Signals
+                         │
+                         ▼
+                    Budget Fit
                          │
                          ▼
                   Hybrid Ranking
@@ -68,11 +122,10 @@ GiftBro then:
                 Top Gift Candidates
                          │
                          ▼
-               Fast Results Display
+                 FAST RESULTS
                          │
-              ┌──────────┴──────────┐
-              ▼                     ▼
-        Save / Details       Optional Gemini
-                                    │
-                                    ▼
-                           Personalized Advice
+                         ▼
+              Optional Gemini Layer
+                         │
+                         ▼
+             Personalized Gift Advice
