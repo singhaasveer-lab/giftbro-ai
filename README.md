@@ -35,6 +35,30 @@ Gemini can then take that shortlist and generate personalized advice such as:
 - How to present it
 - A message to include
 - A final recommendation note
+## 🚀 Why GiftBro?
+
+GiftBro combines two different AI approaches in one recommendation pipeline.
+
+**Machine Learning** handles retrieval and ranking.
+
+**Gemini** handles generative personalization.
+
+Instead of asking a language model to invent a gift from scratch, GiftBro
+first finds relevant candidates from its catalogue and then uses Gemini to
+explain and personalize those candidates.
+
+```text
+User Profile
+      ↓
+Candidate Filtering
+      ↓
+ML Ranking
+      ↓
+Real Catalogue Candidates
+      ↓
+Gemini Personalization
+      ↓
+Personalized Recommendation
 
 ---
 
